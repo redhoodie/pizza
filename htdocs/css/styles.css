@@ -13,6 +13,10 @@ body {
 	background-color: rgba(238, 238, 238, 0.7);
 }
 
+.caption {
+	white-space: nowrap;
+}
+
 @media (min-width: 991px) {
 	.panel-body {
 		min-height: 400px;
