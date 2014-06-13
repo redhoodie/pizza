@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dream Pizza: Order</title>
+    <title>Dream Pizza: Orders</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -47,61 +47,12 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1>Ordering!</h1>
-        <p>Select pizzas from below to have them added to your order!</p>
+        <h1>Orders!</h1>
+        <p>Cancel an order from below or go back to add another order!</p>
+        <a href="/index.html" class="btn btn-default btn-lg">Go Back!</a>
       </div>
       <div class="row">
-        <div class="col-md-8 col-md-push-4">
-          <div class="panel panel-default" id="pizza-selector">
-            <div class="panel-body">
-              <div class="row" id="pizzas">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-md-pull-8">
-          <div class="panel panel-default" id="order-information">
-            <div class="panel-body">
-              <p>Option for pickup or delivery and a place for information.</p>
-
-              <form role="form" method="post" action="orders.html">
-
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="method" id="method_pickup" value="pickup" checked>
-                    Pickup
-                  </label>
-                </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="method" id="method_delivery" value="delivery">
-                    Delivery <kbd class="price">$0.00</kbd>
-                  </label>
-                </div>
-
-                <div class="form-group">
-                  <label class="sr-only" for="name">Customer Name</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Customer Name" required>
-                </div>
-                <div class="form-group delivery-only">
-                  <label class="sr-only" for="address">Address</label>
-                  <input type="text" class="form-control" id="address" name="address" placeholder="Address">
-                </div>
-                <div class="form-group delivery-only">
-                  <label class="sr-only" for="phone">Phone Number</label>
-                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number">
-                </div>
-
-                <table class="table" id="order">
-                </table>
-
-                <button type="submit" class="btn btn-default btn-lg">
-                  Place Order <i class="glyphicon glyphicon-chevron-right"></i>
-                </button>
-              </form>
-            </div>
-          </div>
+        <div class="col-md-12" id="orders">
         </div>
       </div>
     </div>
@@ -111,6 +62,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script type='text/javascript' src='http://www.addressfinder.co.nz/assets/v2/widget.js'></script>
     <script src="js/scripts.js"></script>
-    <script src="js/order.js"></script>
+    <script src="js/orders.js"></script>
   </body>
 </html>
