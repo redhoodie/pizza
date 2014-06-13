@@ -21,7 +21,7 @@ $(function() {
 	function get_order_total () {
 		total = 0.0;
 
-		if ($('#method_delivery').is(':selected')) {
+		if ($('#method_delivery').is(':checked')) {
 			delivery_price = $('#method_delivery').next('.price').text().substr(1);
 			total += parseInt(delivery_price);
 		}
@@ -37,18 +37,32 @@ $(function() {
 	function draw_order() {
 		total = get_order_total();
 
+		// Reset the order
 		$('#order').html("");
 
+		// Add Pizzas to the order
 		for (i = 0; i < order.length; ++i) {
 			pizza = order[i];
-			$('#order').html($('#order').html() + '<tr><th>' + pizza.name + '</th><td>$' + pizza.price + '</td></tr>')
+			$('#order').html($('#order').html() + '<tr id="' + i + '"><th>' + pizza.name + '</th><td>$' + pizza.price + '</td><td><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button></td></tr>')
 		}
 
+		// Add Delivery to the order
+		if ($('#method_delivery').is(':checked')) {
+			$('#order').html($('#order').html() + '<tr><th>Delivery</th><td>' + $('#method_delivery').next('.price').text() + '</td></tr>')
+		}
+
+		// Add price total
 		$('#order').html($('#order').html() + '<tr><th>Total</th><th>$' + total + '</th></tr>')
+
+		// Remove button
+		$('#order button').on('click', function(e){
+			var i = parseInt($(this).closest('tr').attr('id'));
+			order.splice(i, 1);
+			draw_order();
+		});
 	}
 
-	draw_order();
-
+	// Update the order when a pizza is clicked
 	$('.pizza').on('click', function(e) {
 		e.preventDefault();
 		if (order.length < max_pizzas) {
@@ -59,5 +73,9 @@ $(function() {
 			draw_order();
 		}
 	});
-});
 
+	// Update the order when Pickup / Delivery are changed
+	$('input[type=radio]').on('click', draw_order);
+
+	draw_order();
+});
